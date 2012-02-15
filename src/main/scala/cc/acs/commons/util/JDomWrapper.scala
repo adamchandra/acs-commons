@@ -4,7 +4,8 @@ import org.jdom._
 import org.jdom.xpath._
 import java.util.{List => JList}
 import scala.collection.Traversable
-import scalaj.collection.Imports._
+
+import scala.collection.JavaConverters._
 
 object EnrichedJDom {
 

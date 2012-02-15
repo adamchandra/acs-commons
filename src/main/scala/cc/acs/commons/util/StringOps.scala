@@ -5,15 +5,18 @@ object StringOps  {
     new StringOps(s)
   }
 
-  def lines(s:String): Array[String] = {
+  def lines(s:String): Seq[String] = {
     val lines = s.split('\n')
-    val lls = for (l <- lines.iterator if l.trim() != "") yield l
-    lls.toArray
+    val lls = for (l <- lines.iterator) yield l
+    lls.toSeq
   }
 
   // comma, whitespace separated values
   def csv(s:String): Array[String] = "\\s*,\\s*".r.split(s.trim())
   def wsv(s:String): Array[String] = "\\s+".r.split(s.trim())
+  def strsv(s:String, sep:String): List[String] = s.split(sep).toList map (_.trim)
+
+
   val toPair = (ss:Array[String]) => (ss(0), ss(1))
 
   type OptionValues = List[String]
@@ -38,16 +41,16 @@ object StringOps  {
 }
 
 class StringOps(s:String) {
-  def wsv(): Array[String] = {
-    import StringOps.{wsv => xwsv}
-    xwsv(s)
-  }
-  def wsl(): List[String] = {
-    wsv.toList
-  }
-  def csv(): Array[String] = {
-    import StringOps.{csv => xcsv}
-    xcsv(s)
-  }
+  import StringOps._
+  import StringOps.{csv => xcsv}
+  import StringOps.{wsv => xwsv}
+  import StringOps.{strsv => _strsv}
+
+  def wsva: Array[String] = xwsv(s)
+  def wsvl: List[String] = wsva.toList
+  def csva: Array[String] = xcsv(s)
+  def csvl: List[String] = csva.toList
+  def xsvl: List[String] = csva.toList
+  def strsv(sep:String): List[String] = _strsv(s, sep)
 }
 

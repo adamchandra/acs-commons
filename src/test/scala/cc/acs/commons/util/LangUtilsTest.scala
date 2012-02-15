@@ -1,11 +1,10 @@
 package cc.acs.commons.util
 
-import org.junit.Assert._
-import org.junit.Before
-import org.scalatest.junit.JUnitSuite
+import org.specs2.mutable
+import org.specs2.mutable._
 
+object LangUtilsTest extends mutable.Specification {
 
-class LangUtilsTest extends JUnitSuite {
   import LangUtils._
 
   def dictmerge:Unit = {
