@@ -6,15 +6,20 @@ version := "0.1-SNAPSHOT"
 
 scalaVersion := "2.9.1"
 
-libraryDependencies +=  "org.scalaz" %% "scalaz-core" % "6.0.4"
+libraryDependencies ++=  Seq(
+  "org.scalaz"            %% "scalaz-core"       %  "6.0.4",
+  "commons-io"            %  "commons-io"        %  "2.0.1",
+  "org.specs2"            %% "specs2"            %  "1.7.1"  %  "test",
+  "org.jdom"              %  "jdom"              %  "1.1",
+  "net.databinder"        %% "dispatch-http"     %  "0.8.7",
+  "net.databinder"        %% "dispatch-core"     %  "0.8.7",
+  "cc.acs"                %% "boxter-brown"      %  "0.1-SNAPSHOT"
+)
 
-libraryDependencies += "commons-io" % "commons-io" % "2.0.1"
-
-libraryDependencies += "org.scalaj" %% "scalaj-collection"    % "1.2"
-
-libraryDependencies += "org.specs2" %% "specs2" % "1.7.1" % "test"
-
-libraryDependencies += "org.jdom" % "jdom" % "1.1"
+// "cc.spray"              %% "spray-json"        %  "1.1.0",
+// "org.codehaus.jettison" %  "jettison"          %  "1.3",
+// "org.neo4j"             %  "neo4j"             %  "1.6",
+// "javax.servlet"         %  "servlet-api"       %  "2.5"    %  "provided",
 
 // set Ivy logging to be at the highest level
 ivyLoggingLevel := UpdateLogging.Full
