@@ -38,6 +38,29 @@ object StringOps  {
     })
     Map[String, List[String]](argmap.toList.reverse: _*)
   }
+
+
+  /* Remove left/right border from a single or multi-line string, leaving left/right
+   * whitespace intact, e.g.,
+   * 
+   * stripBorder("""
+   *   | x |
+   *   | y |
+   * """)
+   * == " x " + "\n" + " y "
+   */
+  def stripBorder(str:String): String = {
+    val lines = str.trim.lines.map(_.trim)
+    
+    val stripped = lines.map { line =>
+      if (line.startsWith("|") && line.endsWith("|")) 
+        line.substring(1, line.length-1)
+      else sys.error("badly formatted border on line: " + line)
+    }
+    stripped.mkString("\n")
+  }
+
+
 }
 
 class StringOps(s:String) {
