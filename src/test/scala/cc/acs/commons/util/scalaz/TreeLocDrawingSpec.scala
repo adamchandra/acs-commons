@@ -10,6 +10,7 @@ import Z.{node => _, _}
 import cc.acs.commons.util.StringOps._
 import cc.acs.commons.util.FileOps._
 
+import acs.boxes.Boxes
 import acs.boxes.Boxes._
 
 
@@ -36,7 +37,7 @@ object TreeLocDrawingSpec extends mutable.Specification {
       val row = treeOfTreeLocs.flatten.foldl(text("")) { case (acc, tl) => {
         val tboxes = drawTreeLoc(tl) ∘ (text(_))
         val tbox = vcat(AlignFirst)(tboxes.toList)
-        acc +| "   " +| tbox
+        acc +| Boxes.text("   ") +| tbox
       }}
 
       val actual:List[String] = renderBox(row)
